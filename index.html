@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game Of Life Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script> -->
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+
+  </head>
+  <body>
+    <div class="container" id="intro">
+      <h1>Welcome to Game of Life</h1>
+      <button onclick="showSection('rules')">Game Rules</button>
+      <button onclick="showSection('game')">Start Game</button>  
+    </div>
+
+    <div class="container-hidden" id="rules" >
+      <p>The Game of Life is a cellular automaton devised by the British mathematician John Horton Conway in 1970.</p>
+      <p>Rules:</p>
+      <ul>
+        <li>Any live cell with fewer than two live neighbours dies (underpopulation).</li>
+        <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
+        <li>Any live cell with more than three live neighbours dies (overpopulation).</li>
+        <li>Any dead cell with exactly three live neighbours becomes a live cell (reproduction).</li>
+      </ul>
+      <button onclick="showSection('intro')">Menu</button>
+    </div>
+
+    <div class="container-hidden" id="game">
+      <button onclick="reloadGame()">Reload</button>
+      <button onclick="showSection('intro')">Menu</button>
+      <div id="canvas-container"></div>
+    </div>
+
+    <script src="sketch.js"></script>
+    <script>
+      function showSection(sectionID) { 
+        //oculto todo
+        document.getElementById('intro').classList.add('hidden');
+        document.getElementById('rules').classList.add('container-hidden');
+        document.getElementById('game').classList.add('container-hidden');
+
+        //muestro la que quiero
+        document.getElementById(sectionID).classList.remove('container-hidden');
+        document.getElementById(sectionID).classList.remove('hidden');
+      }
+
+      function reloadGame() {
+        resetGrid();
+      }
+
+    </script>
+  </body>
+</html>
